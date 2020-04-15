@@ -3208,7 +3208,12 @@ function data_get_exportdata($dataid, $fields, $selectedfields, $currentgroup=0,
                 if(isset($content[$field->field->id])) {
                     $contents = $field->export_text_value($content[$field->field->id]);
                 }
-                $exportdata[$line][] = $contents;
+                
+                if ($field->type == date){
+                    $exportdata[$line][] =  userdate($contents);
+                }
+                else 
+                    $exportdata[$line][] = $contents;
             }
             if ($tags) {
                 $itemtags = \core_tag_tag::get_item_tags_array('mod_data', 'data_records', $record->id);
