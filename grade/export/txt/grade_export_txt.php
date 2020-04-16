@@ -113,7 +113,7 @@ class grade_export_txt extends grade_export {
                 }
             }
             // Time exported.
-            $exportdata[] = time();
+            $exportdata[] = userdate(time());
             $csvexport->add_data($exportdata);
         }
         $gui->close();
